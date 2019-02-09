@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Carts</title>
+</head>
+<body>
+
+	<div ng-controller="shoppingCartsController">
+		<div ng-repeat="sc in shoppingCarts">
+			<table cellpadding="10px" style="border-bottom: 2px silver solid">
+				<tr>
+					<th>Date</th>
+					<td colspan="3" align="right">{{sc.date}}</td>
+				</tr>
+				<tr>
+					<th>Products</th>
+					<td>Title</td>
+					<td>Price</td>
+					<td align="right">Quantity</td>
+				</tr>
+				<tr ng-repeat="item in sc.items">
+					<td>&nbsp;</td>
+					<td>{{item.product_title}}</td>
+					<td>{{item.product_price}}</td>
+					<td align="right">{{item.quantity}}</td>
+				</tr>
+				<tr>
+					<th>Amount</th>
+					<td colspan="3" align="right">{{sc.amount}}</td>
+				</tr>
+			</table>			
+		</div>
+
+		<a href="/#!/profile">Back</a>
+	</div>
+</body>
+</html>

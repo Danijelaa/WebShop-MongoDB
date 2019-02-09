@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Moderator page</title>
+</head>
+<body>
+	<div ng-controller="moderatorController">
+		<br>
+		<button ng-click="logout()" style="padding: 8px; border-radius: 2px; background-color: lightgreen">Log out</button><br><br>
+		<h3>Products</h3>
+		<table>
+			<tr>
+				<td>Title</td>
+				<td>Category</td>
+				<td>Price</td>
+				<td>Quantity</td>
+			</tr>
+			<tr ng-repeat="p in products">
+				<td>{{p.title}}</td>
+				<!-- <td><input type="text" ng-model="p.category_title"></td> -->
+				<!-- <select ng-model="maca.lokacijaId" ng-options="l.id as l.grad for l in lokacije" ng-init="maca.lokacijaId={id: l.id}" id="lokacija" class="form-control"> -->
+				<td>
+					<!-- <select ng-model="p.category_id" ng-options="c.id as c.category_title for c in categories" ng-init="p.category_id={id: c.id}"> -->
+					<select ng-model="p.category_id" id="categories">
+						<option ng-repeat="c in categories" value="{{c.id}}">{{c.title}}</option>	
+				</td>
+				<td><input type="text" ng-model="p.price"></td>
+				<td><input type="text" ng-model="p.quantity"></td>
+				<td><button ng-click="updateProduct(p.id, p.category_id, p.price, p.quantity)">Update</button></td>
+				<td><button ng-click="deleteProduct(p.id)">Delete</button></td>
+			</tr>
+		</table><br>
+		<button ng-click="changePage(-1)">Previous</button><button ng-click="changePage(1)">Next</button>
+
+		<h4>Add product</h4>
+
+		<form>
+			<table>
+				<tr>
+					<td><label>Title</label></td>
+					<td><input type="text" ng-model="newProduct.title"><br></td>
+				</tr>
+				<tr>
+					<td><label>Category</label></td>
+<!-- 					<td><input type="text" ng-model="newProduct.category"><br></td> -->
+					<td>
+						<select ng-model="newProduct.category_id" id="categories" ng-change="hideMinMax()">
+						<option ng-repeat="c in categories" value="{{c.id}}">{{c.title}}</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label>Price</label></td>
+					<td><input type="text" ng-model="newProduct.price"><br></td>
+				</tr>
+				<tr>
+					<td><label>Quantity</label></td>
+					<td><input type="text" ng-model="newProduct.quantity"><br></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><button ng-click="addProduct()">Add</button></td>
+				</tr>			
+			</table>			
+		</form>
+		<!-- <a href="/">Home</a> -->
+	</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User page</title>
+</head>
+<body>
+	<div ng-controller="userController">
+		<br>
+		<button ng-click="logout()" style="padding: 8px; border-radius: 2px; background-color: lightgreen">Log out</button><br><br>
+		<button ng-click="showShoppingCarts()" style="padding: 10px; border-radius: 4px">My shopping carts</button><br><br><br>
+		<h3>Search products</h3>
+		<table>
+			<label>Category</label><br>
+		<!-- 	<input type="text" ng-model="categorySearch" ng-change="hideMinMax()"><br> -->
+			<select ng-model="categorySearch" id="categories" ng-change="hideMinMax()">
+				<option ng-repeat="c in categories" value="{{c.id}}">{{c.title}}</option>
+			</select><br>
+
+			<span ng-hide="empty">
+				<label>Minimum price</label>
+				<input type="text" ng-model="min"><br>
+				<label>Maximum price</label>
+				<input type="text" ng-model="max">
+			</span><br>
+			<button ng-click="search()">Search</button><button ng-click="reset()">Reset</button>
+		</table><br>
+		<h3>Products</h3>
+		
+		<table cellpadding="10px">
+			<tr>
+				<th>Title</th>
+				<th>Category</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Type in quantity you wish to buy:</th>
+			</tr>
+			<tr ng-repeat="p in products">
+				<td>{{p.title}}</td>
+				<td>{{p.category_title}}</td>
+				<td>{{p.price}}</td>
+				<td>{{p.quantity}}</td>
+				<td><input type="text" ng-model="cartItem.quantity"></td>
+				<td><button ng-click="addToShoppingCart(p.id, p.title, p.price, cartItem.quantity)">Add to shopping cart</button></td>
+			</tr>
+		</table><br>
+		<button ng-click="changePage(-1)">Previous</button><button ng-click="changePage(1)">Next</button>
+		<hr>
+		<div ng-hide="cartItems.length==0">
+			<h3>Chosen products</h3>
+			<table>
+				<tr>
+					<td>Title</td>
+					<td>Quantity</td>
+				</tr>
+				<tr ng-repeat="ci in cartItems">
+					<td>{{ci.title}}</td>
+					<td>{{ci.quantity}}</td>
+				</tr>
+			</table>
+			<span>Amount: {{amount}}</span><br>
+			<button ng-click="createShoppingCart()">Buy</button>			
+		</div><br>
+		<!-- <a href="/">Home</a> -->
+	</div>
+</body>
+</html>
