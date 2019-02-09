@@ -15,7 +15,7 @@ Backend of the application is developed in **Spring Boot** framework and fronten
 `mvn spring-boot:run`
 3. Open browser and connect to: `localhost:8080`
 4. Log in as a moderator using credentials: `moderator` for username and `moderator` for password.  
-If you want to log in as a regular user, you can type in one of following credentials for username and password, respectively:
+If you want to log in as a regular user, you can type in one of the following credentials for username and password, respectively:  
 `username1`  `password1`  
 `username2`  `password2`
 ## REST api
