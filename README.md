@@ -23,7 +23,7 @@ If you want to log in as a regular user, you can type in one of the following cr
 |--------|-----|-------------------|--------------------|-------------|-----------|
 |POST  |`localhost:8080/users/login`|user*||Login to application.||
 |GET  |`localhost:8080/users/logout`|||Logout from application.||
-|GET  |`localhost:8080/products`||_category_id_, _min_, _max_, _sortOrder_, _page_<br>(None of the parameters is required.)|Paginated listing of all products.||
+|GET  |`localhost:8080/products`||_category_id_, _min_, _max_, _sortOrder_, _page_<br>(None of the parameters is required.)|Paginated listing of all products. Listed parameters enable search by category, mimimum price, maximum price, sorting by price and search by page number respectively.||
 |GET  |`localhost:8080/products/{id}`<br> _id_-type String (textual representation of an ObjectId)|||Retrieving product by specified ID.||
 |PUT  |`localhost:8080/products/{id}`<br> _id_-type String (textual representation of an ObjectId)|product**||Updating product with specified ID.|moderator|
 |POST  |`localhost:8080/products/`|product***||Creating new product.|moderator|
