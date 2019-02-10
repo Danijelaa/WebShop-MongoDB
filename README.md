@@ -21,16 +21,16 @@ If you want to log in as a regular user, you can type in one of the following cr
 ## REST api
 | Method | URL |Request Body (JSON)|Request Parameter(s)| Description | Authority |
 |--------|-----|-------------------|--------------------|-------------|-----------|
-|POST  |`localhost:8080/users/login`|user*||Login to application.||
-|GET  |`localhost:8080/users/logout`|||Logout from application.||
-|GET  |`localhost:8080/products`||_category_id_, _min_, _max_, _sortOrder_, _page_<br>(None of the parameters is required.)|Paginated listing of all products. Listed parameters enable search by category, mimimum price, maximum price, sorting by price and search by page number respectively.||
-|GET  |`localhost:8080/products/{id}`<br> _id_-type String (textual representation of an ObjectId)|||Retrieving product by specified ID.||
-|PUT  |`localhost:8080/products/{id}`<br> _id_-type String (textual representation of an ObjectId)|product**||Updating product with specified ID.|moderator|
-|POST  |`localhost:8080/products/`|product***||Creating new product.|moderator|
-|DELETE  |`localhost:8080/products/{id}`<br> _id_-type String (textual representation of an ObjectId)|||Deleting product with specified ID.|moderator|
-|GET  |`localhost:8080/shopping-carts`|||Retrieving shopping carts of logged user.|user|
-|POST  |`localhost:8080/shopping-carts`|shopping-cart-array****||Creating new shopping cart.|user|
-|GET  |`localhost:8080/categories`|||Retrieving all categories of products.||
+|POST  |`/users/login`|user*||Login to application.||
+|GET  |`/users/logout`|||Logout from application.||
+|GET  |`/products`||_category_id_-type String (textual representation of an ObjectId), <br>_min_-type Numeric (double),<br> _max_-type Numeric (double),<br> _sortOrder_-type Numeric (1 or -1), <br>_page_-type Numeric (integer)<br>(None of the parameters is required.)|Paginated listing of all products. Listed parameters enable search by category, mimimum price, maximum price, sorting by price and search by page number respectively.||
+|GET  |`/products/{id}`<br> _id_-type String (textual representation of an ObjectId)|||Retrieving product by specified ID.||
+|PUT  |`/products/{id}`<br> _id_-type String (textual representation of an ObjectId)|product**||Updating product with specified ID.|moderator|
+|POST  |`/products/`|product***||Creating new product.|moderator|
+|DELETE  |`/products/{id}`<br> _id_-type String (textual representation of an ObjectId)|||Deleting product with specified ID.|moderator|
+|GET  |`/shopping-carts`|||Retrieving shopping carts of logged user.|user|
+|POST  |`/shopping-carts`|shopping-cart-array****||Creating new shopping cart.|user|
+|GET  |`/categories`|||Retrieving all categories of products.||
 
 #### Formats of JSON objects required in request body
 *user 
