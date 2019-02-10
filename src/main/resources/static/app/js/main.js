@@ -139,6 +139,7 @@ app.controller("userController", function($scope, $http, $location, $routeParams
 	$scope.categorySearch="";
 	$scope.min="";
 	$scope.max="";
+	$scope.sortOrder=1;
 
 	var urlProducts="/products";
 	var urlCategories="/categories";
@@ -158,6 +159,7 @@ app.controller("userController", function($scope, $http, $location, $routeParams
 	};
 
 	var getProducts=function(){
+		
 		var config={params:{}};
 		config.params.page=pageNumber;
 		if($scope.categorySearch!=""){
@@ -168,8 +170,9 @@ app.controller("userController", function($scope, $http, $location, $routeParams
 			if($scope.max!=""){
 				config.params.max=$scope.max;
 			}
-
+			config.params.sortOrder=$scope.sortOrder;
 		}
+
 		$http.get(urlProducts, config).then(
 			function success(response){
 				$scope.products=response.data;
@@ -202,6 +205,7 @@ app.controller("userController", function($scope, $http, $location, $routeParams
 		$scope.categorySearch="";
 		$scope.min="";
 		$scope.max="";
+		$scope.sortOrder=1;
 		getProducts();
 	};
 
