@@ -9,6 +9,8 @@ This is simple Web Shop application which enables:
 - moderator to delete products.  
 
 Backend of the application is developed in **Spring Boot** framework and frontend by using **HTML** and **AngularJS**. Application uses NoSQL database **MongoDB** to store data.
+
+**Main focus of the application is on Java backend. Frontend was used ONLY for easier demonstration of application purpose.**
 ## Installation
 1. Start MongodDB server.
 2. Clone or download the project and unpack the folder. Navigate to project where pom.xml file is. Start the application using Maven command:
