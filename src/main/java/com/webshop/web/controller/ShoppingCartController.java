@@ -70,15 +70,6 @@ public class ShoppingCartController {
 		}
 		return new ResponseEntity<>(toShoppingCartDtoOut.convert(shoppingCarts), HttpStatus.OK);
 	}
-	/*
-	@RequestMapping(method=RequestMethod.GET, value="/{id}")
-	ResponseEntity<?> getShoppingCartById(@RequestParam String id){
-		ShoppingCart sc=scs.findById(new ObjectId(id));
-		if(sc==null){
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<>(toShoppingCartDtoOut.convert(sc), HttpStatus.OK);
-	}*/
 	
 	@RequestMapping(method=RequestMethod.POST)
 	ResponseEntity<?> createShoppingCart(@RequestBody List<CartItemDTO> cartItemDtos, HttpSession session){

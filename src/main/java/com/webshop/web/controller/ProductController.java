@@ -42,11 +42,6 @@ public class ProductController {
 	private Validation validation;
 	@Autowired
 	private ProductDTOToProduct toProduct;
-	/*@RequestMapping(method=RequestMethod.GET)
-	ResponseEntity<List<ProductDTO>> allProducts(@RequestParam Integer pageNumber){
-		List<Product> products=ps.getAllProducts(pageNumber);
-		return new ResponseEntity<>(toProductDto.convert(products), HttpStatus.OK);
-	}*/
 	
 	@RequestMapping(method=RequestMethod.GET, value="/{id}")
 	ResponseEntity<?> getOne(@PathVariable String id){
@@ -101,9 +96,6 @@ public class ProductController {
 			hrs.add("Content-Type", "text/plain");
 			return new ResponseEntity<>("Ids do not match.", hrs, HttpStatus.BAD_REQUEST);
 		}
-/*		if(!ObjectId.isValid(id)){
-			return new ResponseEntity<String>("Invalid hexadecimal representation of an ObjectId!", HttpStatus.BAD_REQUEST);
-		}*/
 		boolean validated=validation.validateUpdatedProduct(updatedProduct);
 		if(!validated) {
 			HttpHeaders hrs=new HttpHeaders();
@@ -149,11 +141,6 @@ public class ProductController {
 			log.insertOne(doc);
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-/*		if(!added) {
-			HttpHeaders hrs=new HttpHeaders();
-			hrs.add("Content-Type", "text/plain");
-			return new ResponseEntity<>("Sorry. :( \nCould not add product.", hrs, HttpStatus.BAD_REQUEST);
-		}*/
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
@@ -162,12 +149,6 @@ public class ProductController {
 		if(moderator==null || !moderator.getUsername().equals("moderator")){
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
-	/*	Product product=ps.getById(new ObjectId(id));
-		if(product==null) {
-			HttpHeaders hrs=new HttpHeaders();
-			hrs.add("Content-Type", "text/plain");
-			return new ResponseEntity<>("Can not delete non-existent product.", hrs, HttpStatus.NOT_FOUND);
-		}*/
 		boolean deleted=false;
 		try {
 			deleted = ps.deleteProduct(new ObjectId(id));

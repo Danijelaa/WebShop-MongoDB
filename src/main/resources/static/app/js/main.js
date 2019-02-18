@@ -149,12 +149,6 @@ app.controller("userController", function($scope, $http, $location, $routeParams
 	$scope.categories=[];
 
 	$scope.hideMinMax=function(){
-	/*	if($scope.categorySearch==""){
-			$scope.empty=true;
-		}
-		else{
-			$scope.empty=false;
-		}*/
 		$scope.empty=false;
 	};
 
@@ -247,7 +241,6 @@ app.controller("userController", function($scope, $http, $location, $routeParams
 
 	};
 
-	//$scope.cleanArray=[];
 	$scope.createShoppingCart=function(){
 
 		$http.post(urlShoppingCarts, $scope.cartItems).then(
@@ -256,7 +249,6 @@ app.controller("userController", function($scope, $http, $location, $routeParams
 				$scope.cartItems=[];
 				pageNumber=pageStart;
 				getProducts();
-				//$scope.changePage();
 			},
 			function error(){
 				alert("Error happened while creating shopping cart.");
